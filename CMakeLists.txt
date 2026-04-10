@@ -21,9 +21,9 @@ endif(ENABLE_STATIC)
 
 install(FILES "cnpy.h" DESTINATION include)
 
-add_executable(test test/gen.cpp)
-target_include_directories(test PRIVATE ${CMAKE_SOURCE_DIR})
-target_link_libraries(test cnpy)
+add_executable(test_gen test/gen.cpp)
+target_include_directories(test_gen PRIVATE ${CMAKE_SOURCE_DIR})
+target_link_libraries(test_gen cnpy)
 
 add_custom_command(
     OUTPUT ${CMAKE_BINARY_DIR}/critic
