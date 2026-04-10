@@ -22,13 +22,13 @@ endif(ENABLE_STATIC)
 install(FILES "cnpy.h" DESTINATION include)
 
 add_executable(test_gen test/gen.cpp)
-target_include_directories(test_gen PRIVATE ${CMAKE_SOURCE_DIR})
+target_include_directories(test_gen PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(test_gen cnpy)
 
 add_custom_command(
-    OUTPUT ${CMAKE_BINARY_DIR}/critic
-    COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/test/critic.py ${CMAKE_BINARY_DIR}/critic
-    COMMAND chmod +x ${CMAKE_BINARY_DIR}/critic
-    DEPENDS ${CMAKE_SOURCE_DIR}/test/critic.py
+    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/critic
+    COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/test/critic.py ${CMAKE_CURRENT_BINARY_DIR}/critic
+    COMMAND chmod +x ${CMAKE_CURRENT_BINARY_DIR}/critic
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/test/critic.py
 )
-add_custom_target(critic ALL DEPENDS ${CMAKE_BINARY_DIR}/critic)
+add_custom_target(critic ALL DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/critic)
